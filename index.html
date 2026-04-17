@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sowmya & Venu Wedding</title>
+
+<meta property="og:title" content="Sowmya & Venu Wedding 💍">
+<meta property="og:description" content="A new chapter begins. Join us on May 10, 2026.">
+<meta property="og:image" content="https://yourdomain.com/preview.jpg">
+<meta property="og:url" content="https://yourdomain.com">
+<meta property="og:type" content="website">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@500;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;}
+body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow:hidden;}
+
+video{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-2;animation:zoomVideo 25s infinite alternate ease-in-out;}
+@keyframes zoomVideo{from{transform:scale(1);} to{transform:scale(1.08);} }
+
+.overlay{position:fixed;width:100%;height:100%;background:radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(0,0,0,0.9));z-index:-1;transition:background 0.15s ease;will-change:background;}
+
+.petal{position:fixed;top:-10px;width:8px;height:8px;background:#ffb6c1;border-radius:50%;opacity:0.7;animation:fall linear infinite;will-change:transform;}
+@keyframes fall{to{transform:translateY(110vh) translateX(40px);opacity:0;} }
+
+.center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;max-width:480px;padding:25px;border-radius:22px;background:rgba(255,255,255,0.07);backdrop-filter:blur(12px);text-align:center;transition:transform 0.12s ease;will-change:transform;}
+
+.names{
+ font-family:'Playfair Display',serif;
+ font-size:2.7rem;
+ font-weight:700;
+ letter-spacing:3px;
+ background:linear-gradient(90deg,#ffffff,#ffd1dc,#ffffff);
+ background-size:200% auto;
+ -webkit-background-clip:text;
+ color:transparent;
+ animation:fadeUp 1.2s ease forwards, shine 4s linear infinite;
+}
+@keyframes shine{
+ 0%{background-position:0% center;}
+ 100%{background-position:200% center;}
+}
+.tagline{
+ margin-top:10px;
+ font-size:14px;
+ font-weight:500;
+ letter-spacing:1px;
+ text-transform:uppercase;
+ opacity:0.85;
+ animation:fadeUp 1.2s ease forwards;
+ animation-delay:0.4s;
+}
+.divider{margin:18px auto;width:70px;height:2px;background:linear-gradient(90deg,#ff7eb3,#65d6ff,#ff7eb3);background-size:200% 100%;animation:glowLine 3s linear infinite;}
+.details{
+ font-size:15px;
+ font-weight:500;
+ letter-spacing:0.5px;
+ line-height:1.7;
+ opacity:0;
+ animation:fadeUp 1.2s ease forwards;
+ animation-delay:0.8s;
+}
+.actions{margin-top:15px;display:flex;gap:8px;justify-content:center;opacity:0;animation:fadeUp 1.2s ease forwards;animation-delay:1.2s;}
+.btn{flex:1;padding:9px;border-radius:18px;border:none;font-size:12px;cursor:pointer;background:rgba(255,255,255,0.15);color:#fff;}
+
+.countdown{margin-top:12px;font-size:13px;opacity:0;animation:fadeUp 1.2s ease forwards;animation-delay:1.6s;}
+
+
+
+@keyframes move{0%{transform:translate(0,0)}100%{transform:translate(150px,120px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}
+@keyframes glowLine{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}
+
+.music{position:fixed;bottom:15px;right:15px;background:#fff;color:#000;padding:8px;border-radius:50%;cursor:pointer;}
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+
+
+/* 🎯 CINEMATIC CURSOR */
+.cursor{
+ position:fixed;top:0;left:0;width:12px;height:12px;border-radius:50%;
+ background:rgba(255,255,255,0.9);
+ pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+ box-shadow:0 0 12px rgba(255,255,255,0.8),0 0 25px rgba(255,255,255,0.5);
+}
+
+.trail{
+ position:fixed;width:6px;height:6px;border-radius:50%;
+ background:rgba(255,255,255,0.5);
+ pointer-events:none;z-index:9998;
+ transform:translate(-50%,-50%);
+}
+
+.ripple{
+ position:fixed;border-radius:50%;border:2px solid rgba(255,255,255,0.6);
+ pointer-events:none;z-index:9997;
+ animation:rippleAnim 0.6s ease-out forwards;
+}
+@keyframes rippleAnim{
+ from{transform:scale(0.2);opacity:1;}
+ to{transform:scale(2);opacity:0;}
+}
+
+
+
+/* 🎯 CURSOR HOVER STATES */
+.cursor.active{
+ transform:translate(-50%,-50%) scale(1.8);
+ background:rgba(255,255,255,0.4);
+}
+
+</style>
+</head>
+
+<body oncontextmenu="return false">
+
+<div class="cursor" id="cursor"></div>
+
+<canvas id="particles"></canvas>
+
+
+<script>
+const isMobile = window.innerWidth < 768;
+const petalCount = isMobile ? 10 : 20;
+for(let i=0;i<petalCount;i++){
+ let p=document.createElement('div');
+ p.className='petal';
+ p.style.left=Math.random()*100+'vw';
+ p.style.animationDuration=(6+Math.random()*4)+'s';
+ document.body.appendChild(p);
+}
+</script>
+
+<video autoplay muted loop playsinline>
+  <source src="video.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<audio id="bgm" loop><source src="music.mp3" type="audio/mpeg"></audio>
+<audio id="mantra" loop><source src="mantra.mp3" type="audio/mpeg"></audio>
+
+<div class="music" onclick="playMusic()">🔊</div>
+
+<div class="center">
+  <div class="names">Sowmya & Venu</div>
+  <div class="tagline">Together with love & blessings</div>
+  <div style="margin-top:6px;font-size:12px;opacity:0.7;font-style:italic;">🪔 शुभमस्तु विवाहः 🪔</div>
+  <div class="divider"></div>
+  <div class="details">
+    📍 Thotapally<br>
+    🗓 Sunday, May 10, 2026<br>
+    ⏰ Muhurtham: 10:25 AM<br>
+    ✨ Auspicious Wedding Ceremony
+  </div>
+  <div class="countdown" id="countdown"></div>
+  <div class="actions">
+    <button class="btn" onclick="openMap()">Location</button>
+    <button class="btn" onclick="shareWA()">Share</button>
+  </div>
+</div>
+
+<script>
+// AUDIO + ANALYSER (for beat sync)
+let started=false;
+let audioCtx, analyser, dataArray;
+
+function initAudio(){
+ if(audioCtx) return;
+ audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+ const bgm = document.getElementById("bgm");
+ const source = audioCtx.createMediaElementSource(bgm);
+ analyser = audioCtx.createAnalyser();
+ analyser.fftSize = 256;
+ dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+ source.connect(analyser);
+ analyser.connect(audioCtx.destination);
+}
+
+function playMusic(){
+ if(started) return;
+ started=true;
+ initAudio();
+ let bgm=document.getElementById("bgm");
+ let mantra=document.getElementById("mantra");
+ bgm.volume=0.6; mantra.volume=0.2;
+ bgm.play(); mantra.play();
+}
+
+window.addEventListener('click',playMusic,{once:true, passive:true});
+
+// COUNTDOWN
+let target=new Date("May 10, 2026 10:25:00").getTime();
+setInterval(()=>{
+ let d=target-Date.now();
+ let days=Math.floor(d/(1000*60*60*24));
+ let hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+ let min=Math.floor((d%(1000*60*60))/(1000*60));
+ document.getElementById("countdown").innerHTML=`⏳ ${days}d ${hrs}h ${min}m left`;
+},1000);
+
+function openMap(){window.open("https://maps.google.com/?q=Thotapally","_blank");}
+function shareWA(){window.open(`https://wa.me/?text=${encodeURIComponent(window.location.href)}`);}
+
+// PARTICLES + ADAPTIVE PERFORMANCE
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+let dpr=Math.min(window.devicePixelRatio,1.5);
+
+function resizeCanvas(){
+ canvas.width=innerWidth*dpr;
+ canvas.height=innerHeight*dpr;
+ ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+resizeCanvas();
+
+let baseCount = isMobile ? 40 : 70;
+let particleCount = baseCount;
+let particles=[];
+
+function initParticles(count){
+ particles=[];
+ for(let i=0;i<count;i++){
+  particles.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*800,size:Math.random()*1.5});
+ }
+}
+initParticles(particleCount);
+
+let mouse={x:innerWidth/2,y:innerHeight/2};
+window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;},{passive:true});
+
+let lastTime=performance.now();
+let fps=60;
+
+function draw(now){
+ let delta=now-lastTime;
+ fps=1000/delta;
+ lastTime=now;
+
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ for(let p of particles){
+   let scale=800/(800+p.z);
+   let x=(p.x-innerWidth/2)*scale+innerWidth/2;
+   let y=(p.y-innerHeight/2)*scale+innerHeight/2;
+
+   let dx=x-mouse.x, dy=y-mouse.y;
+   let dist=dx*dx+dy*dy;
+   if(dist<8000){x+=dx*0.02;y+=dy*0.02;}
+
+   ctx.beginPath();
+   ctx.arc(x,y,p.size*scale,0,Math.PI*2);
+   // 🎨 PARTICLES COLOR SYNC WITH HUE
+   let particleHue = (hue + p.z*0.05) % 360;
+   ctx.fillStyle=`hsla(${particleHue}, 80%, 70%, 0.5)`;
+   ctx.fill();
+
+   p.z-=1.5; if(p.z<=0) p.z=800;
+ }
+
+ requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+
+// 🧠 ADAPTIVE ENGINE
+setInterval(()=>{
+ if(fps < 30 && particleCount > 20){
+   particleCount -= 10;
+   initParticles(particleCount);
+ }
+ else if(fps > 55 && particleCount < baseCount){
+   particleCount += 5;
+   initParticles(particleCount);
+ }
+},2000);
+
+// PARALLAX (adaptive throttle)
+let last=0;
+window.addEventListener('mousemove',e=>{
+ let now=performance.now();
+ if(now-last<20) return;
+ last=now;
+ let x=(innerWidth/2-e.clientX)/30;
+ let y=(innerHeight/2-e.clientY)/30;
+ document.querySelector('.center').style.transform=`translate(-50%,-50%) rotateY(${x}deg) rotateX(${y}deg)`;
+},{passive:true});
+
+// LIGHT + AUDIO REACTIVE RAINBOW
+let hue = 0;
+window.addEventListener('mousemove',e=>{
+ if(fps < 25) return;
+ let x=e.clientX/innerWidth*100;
+ let y=e.clientY/innerHeight*100;
+
+ let beat = 0;
+ if(analyser){
+   analyser.getByteFrequencyData(dataArray);
+   beat = dataArray.reduce((a,b)=>a+b,0)/dataArray.length;
+ }
+
+ hue = (hue + 1 + beat*0.05) % 360;
+ let intensity = 0.05 + (beat/255)*0.08;
+
+ document.querySelector('.overlay').style.background=
+ `radial-gradient(circle at ${x}% ${y}%, hsla(${hue}, 80%, 60%, ${intensity}), rgba(0,0,0,0.96))`;
+},{passive:true});
+
+window.addEventListener('resize',resizeCanvas);
+
+// 🎯 CURSOR FX
+const cursor=document.getElementById('cursor');
+let trailCount=8;
+let trails=[];
+for(let i=0;i<trailCount;i++){
+ let t=document.createElement('div');
+ t.className='trail';
+ document.body.appendChild(t);
+ trails.push({el:t,x:0,y:0});
+}
+
+window.addEventListener('mousemove',e=>{
+ cursor.style.left=e.clientX+'px';
+ cursor.style.top=e.clientY+'px';
+
+ trails.forEach((t,i)=>{
+   setTimeout(()=>{
+     t.el.style.left=e.clientX+'px';
+     t.el.style.top=e.clientY+'px';
+   },i*20);
+ });
+},{passive:true});
+
+// 💥 CLICK RIPPLE
+window.addEventListener('click',e=>{
+ let r=document.createElement('div');
+ r.className='ripple';
+ r.style.left=e.clientX+'px';
+ r.style.top=e.clientY+'px';
+ r.style.width='20px';
+ r.style.height='20px';
+ document.body.appendChild(r);
+ setTimeout(()=>r.remove(),600);
+});
+</script>
+
+
+
+<audio id="clickSound"><source src="click.mp3" type="audio/mpeg"></audio>
+
+<script>
+
+// 🎯 BUTTON INTERACTION + PROXIMITY FX
+const buttons = document.querySelectorAll('.btn');
+
+window.addEventListener('mousemove',(e)=>{
+ buttons.forEach(btn=>{
+   let rect = btn.getBoundingClientRect();
+   let cx = rect.left + rect.width/2;
+   let cy = rect.top + rect.height/2;
+
+   let dx = e.clientX - cx;
+   let dy = e.clientY - cy;
+   let dist = Math.sqrt(dx*dx + dy*dy);
+
+   // ❌ Glow removed for clean minimal look
+   btn.style.boxShadow = 'none';
+   btn.style.boxShadow = `0 0 ${20*intensity}px rgba(255,255,255,${0.6*intensity})`;
+ });
+},{passive:true});
+
+buttons.forEach(btn=>{
+
+ btn.addEventListener('mouseenter',()=>{
+   cursor.classList.add('active');
+ });
+
+ btn.addEventListener('mouseleave',()=>{
+   cursor.classList.remove('active');
+   btn.style.transform='translate(0,0)';
+   btn.style.boxShadow='none';
+ });
+
+ // 🧲 MAGNETIC EFFECT
+ btn.addEventListener('mousemove',(e)=>{
+   let rect = btn.getBoundingClientRect();
+   let x = e.clientX - rect.left - rect.width/2;
+   let y = e.clientY - rect.top - rect.height/2;
+   btn.style.transform = `translate(${x*0.2}px, ${y*0.2}px)`;
+ });
+
+ // 🔊 DISTANCE BASED SOUND
+ btn.addEventListener('click',(e)=>{
+   let rect = btn.getBoundingClientRect();
+   let cx = rect.left + rect.width/2;
+   let cy = rect.top + rect.height/2;
+
+   let dx = e.clientX - cx;
+   let dy = e.clientY - cy;
+   let dist = Math.sqrt(dx*dx + dy*dy);
+
+   let maxDist = 200;
+   let volume = Math.max(0.2, 1 - dist/maxDist);
+
+   let s=document.getElementById('clickSound');
+   s.currentTime=0;
+   s.volume=volume;
+   s.play();
+ });
+
+});
+
+</script>
+
+</body>
+</html>
