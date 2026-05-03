@@ -157,6 +157,83 @@ video{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-2;animatio
  transform:translate(-50%,-50%) scale(1.8);
  background:rgba(255,255,255,0.4);
 }
+ /* ☰ MENU BUTTON */
+.menu-btn{
+ position:fixed;
+ top:15px;
+ right:15px;
+ font-size:20px;
+ background:rgba(255,255,255,0.2);
+ backdrop-filter:blur(10px);
+ padding:10px 14px;
+ border-radius:12px;
+ cursor:pointer;
+ z-index:10000;
+}
+
+/* SIDE MENU */
+.side-menu{
+ position:fixed;
+ top:0;
+ right:-100%;
+ width:260px;
+ height:100%;
+ background:rgba(255,255,255,0.08);
+ backdrop-filter:blur(18px);
+ transition:0.4s;
+ padding:15px;
+ z-index:10000;
+}
+.side-menu.active{right:0;}
+
+.menu-header{
+ display:flex;
+ justify-content:space-between;
+ margin-bottom:10px;
+}
+
+.tabs button{
+ width:100%;
+ margin:5px 0;
+ padding:8px;
+ border:none;
+ border-radius:10px;
+ background:rgba(255,255,255,0.15);
+ color:#fff;
+ cursor:pointer;
+}
+
+/* GALLERY */
+.tab-content{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:8px;
+}
+.tab-content img{
+ width:100%;
+ border-radius:12px;
+ cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+ display:none;
+ position:fixed;
+ top:0;
+ left:0;
+ width:100%;
+ height:100%;
+ background:rgba(0,0,0,0.7);
+ backdrop-filter:blur(12px);
+ justify-content:center;
+ align-items:center;
+ z-index:20000;
+}
+.modal img{
+ max-width:90%;
+ max-height:80%;
+ border-radius:18px;
+}
 
 </style>
 </head>
@@ -166,6 +243,37 @@ video{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-2;animatio
 <div class="cursor" id="cursor"></div>
 
 <canvas id="particles"></canvas>
+
+ <!-- ☰ MENU BUTTON -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<!-- 📂 SIDE MENU -->
+<div class="side-menu" id="sideMenu">
+  <div class="menu-header">
+    <span>Wedding Events</span>
+    <button onclick="toggleMenu()">✖</button>
+  </div>
+
+  <div class="tabs">
+    <button onclick="openTab('haldi')">Haldi</button>
+    <button onclick="openTab('reception')">Reception</button>
+  </div>
+
+  <div class="tab-content" id="haldi">
+    <img src="haldi1.jpg" onclick="openModal(this.src)">
+    <img src="haldi2.jpg" onclick="openModal(this.src)">
+  </div>
+
+  <div class="tab-content" id="reception" style="display:none;">
+    <img src="rec1.jpg" onclick="openModal(this.src)">
+    <img src="rec2.jpg" onclick="openModal(this.src)">
+  </div>
+</div>
+
+<!-- 🖼 MODAL -->
+<div class="modal" id="imgModal" onclick="closeModal()">
+  <img id="modalImg">
+</div>
 
 
 <script>
@@ -177,6 +285,60 @@ for(let i=0;i<petalCount;i++){
  p.style.left=Math.random()*100+'vw';
  p.style.animationDuration=(6+Math.random()*4)+'s';
  document.body.appendChild(p);
+}
+
+ // MENU
+function toggleMenu(){
+ document.getElementById('sideMenu').classList.toggle('active');
+}
+
+// TAB SWITCH
+function openTab(tab){
+ document.querySelectorAll('.tab-content').forEach(t=>t.style.display='none');
+ document.getElementById(tab).style.display='grid';
+}
+
+// MODAL
+function openModal(src){
+ let modal=document.getElementById('imgModal');
+ document.getElementById('modalImg').src=src;
+ modal.style.display='flex';
+}
+
+function closeModal(){
+ document.getElementById('imgModal').style.display='none';
+}
+
+// AUTO CLOSE MENU (pro UX)
+window.addEventListener('click',(e)=>{
+ let menu=document.getElementById('sideMenu');
+ let btn=document.querySelector('.menu-btn');
+
+ if(!menu.contains(e.target) && !btn.contains(e.target)){
+   menu.classList.remove('active');
+ }
+});
+ 
+ // MENU
+function toggleMenu(){
+ document.getElementById('sideMenu').classList.toggle('active');
+}
+
+// TAB SWITCH
+function openTab(tab){
+ document.querySelectorAll('.tab-content').forEach(t=>t.style.display='none');
+ document.getElementById(tab).style.display='grid';
+}
+
+// MODAL
+function openModal(src){
+ let modal=document.getElementById('imgModal');
+ document.getElementById('modalImg').src=src;
+ modal.style.display='flex';
+}
+
+function closeModal(){
+ document.getElementById('imgModal').style.display='none';
 }
 </script>
 
