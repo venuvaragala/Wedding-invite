@@ -293,10 +293,7 @@ function toggleMenu(){
 }
 
 // TAB SWITCH
-function openTab(tab){
- document.querySelectorAll('.tab-content').forEach(t=>t.style.display='none');
- document.getElementById(tab).style.display='grid';
-}
+
 
 // MODAL
 function openModal(src){
@@ -325,10 +322,7 @@ function toggleMenu(){
 }
 
 // TAB SWITCH
-function openTab(tab){
- document.querySelectorAll('.tab-content').forEach(t=>t.style.display='none');
- document.getElementById(tab).style.display='grid';
-}
+
 
 // MODAL
 function openModal(src){
@@ -340,6 +334,37 @@ function openModal(src){
 function closeModal(){
  document.getElementById('imgModal').style.display='none';
 }
+ // ✅ Make functions global
+window.toggleMenu = function(){
+ document.getElementById('sideMenu').classList.toggle('active');
+};
+
+window.openTab = function(tab){
+ document.querySelectorAll('.tab-content').forEach(t=>t.style.display='none');
+ document.getElementById(tab).style.display='grid';
+};
+
+window.openModal = function(src){
+ let modal=document.getElementById('imgModal');
+ document.getElementById('modalImg').src=src;
+ modal.style.display='flex';
+};
+
+window.closeModal = function(){
+ document.getElementById('imgModal').style.display='none';
+};
+
+// ✅ Close menu when clicking outside
+window.addEventListener('click',(e)=>{
+ let menu=document.getElementById('sideMenu');
+ let btn=document.querySelector('.menu-btn');
+
+ if(menu && btn){
+   if(!menu.contains(e.target) && !btn.contains(e.target)){
+     menu.classList.remove('active');
+   }
+ }
+});
 </script>
 
 <video autoplay muted loop playsinline>
