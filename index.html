@@ -157,12 +157,12 @@ video{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-2;animatio
  transform:translate(-50%,-50%) scale(1.8);
  background:rgba(255,255,255,0.4);
 }
- /* ☰ MENU BUTTON */
+ 
+ /* MENU BUTTON */
 .menu-btn{
  position:fixed;
  top:15px;
  right:15px;
- font-size:20px;
  background:rgba(255,255,255,0.2);
  backdrop-filter:blur(10px);
  padding:10px 14px;
@@ -186,16 +186,10 @@ video{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-2;animatio
 }
 .side-menu.active{right:0;}
 
-.menu-header{
- display:flex;
- justify-content:space-between;
- margin-bottom:10px;
-}
-
 .tabs button{
  width:100%;
  margin:5px 0;
- padding:8px;
+ padding:10px;
  border:none;
  border-radius:10px;
  background:rgba(255,255,255,0.15);
@@ -203,19 +197,7 @@ video{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-2;animatio
  cursor:pointer;
 }
 
-/* GALLERY */
-.tab-content{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:8px;
-}
-.tab-content img{
- width:100%;
- border-radius:12px;
- cursor:pointer;
-}
-
-/* MODAL */
+/* FULL SCREEN GALLERY */
 .modal{
  display:none;
  position:fixed;
@@ -223,31 +205,77 @@ video{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-2;animatio
  left:0;
  width:100%;
  height:100%;
- background:rgba(0,0,0,0.7);
- backdrop-filter:blur(12px);
+ background:rgba(0,0,0,0.8);
+ backdrop-filter:blur(15px);
  justify-content:center;
  align-items:center;
  z-index:20000;
 }
-.modal img{
- max-width:90%;
- max-height:80%;
- border-radius:18px;
+
+.gallery-container{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+ padding:20px;
+ max-width:500px;
 }
 
+.gallery-container img{
+ width:100%;
+ border-radius:15px;
+}
+// MENU
+window.toggleMenu = function(){
+ document.getElementById('sideMenu').classList.toggle('active');
+};
+
+// IMAGE DATA
+const galleries = {
+ haldi: [
+  "haldi1.jpg",
+  "haldi2.jpg",
+  "haldi3.jpg",
+  "haldi4.jpg",
+  "haldi5.jpg"
+ ],
+ reception: [
+  "rec1.jpg",
+  "rec2.jpg",
+  "rec3.jpg",
+  "rec4.jpg",
+  "rec5.jpg"
+ ]
+};
+
+// OPEN GALLERY
+window.openGallery = function(type){
+ let modal = document.getElementById("galleryModal");
+ let container = document.getElementById("galleryContainer");
+
+ container.innerHTML = "";
+
+ galleries[type].forEach(img=>{
+   let image = document.createElement("img");
+   image.src = img;
+   container.appendChild(image);
+ });
+
+ modal.style.display = "flex";
+};
+
+// CLOSE GALLERY
+document.getElementById("galleryModal").onclick = function(){
+ this.style.display = "none";
+};
 </style>
 </head>
 
 <body oncontextmenu="return false">
 
 <div class="cursor" id="cursor"></div>
-
-<canvas id="particles"></canvas>
-
- <!-- ☰ MENU BUTTON -->
+<!-- ☰ MENU -->
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<!-- 📂 SIDE MENU -->
 <div class="side-menu" id="sideMenu">
   <div class="menu-header">
     <span>Wedding Events</span>
@@ -255,25 +283,16 @@ video{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-2;animatio
   </div>
 
   <div class="tabs">
-    <button onclick="openTab('haldi')">Haldi</button>
-    <button onclick="openTab('reception')">Reception</button>
-  </div>
-
-  <div class="tab-content" id="haldi">
-    <img src="haldi1.jpg" onclick="openModal(this.src)">
-    <img src="haldi2.jpg" onclick="openModal(this.src)">
-  </div>
-
-  <div class="tab-content" id="reception" style="display:none;">
-    <img src="rec1.jpg" onclick="openModal(this.src)">
-    <img src="rec2.jpg" onclick="openModal(this.src)">
+    <button onclick="openGallery('haldi')">Haldi</button>
+    <button onclick="openGallery('reception')">Reception</button>
   </div>
 </div>
 
-<!-- 🖼 MODAL -->
-<div class="modal" id="imgModal" onclick="closeModal()">
-  <img id="modalImg">
+<!-- 🖼 FULL SCREEN GALLERY -->
+<div class="modal" id="galleryModal">
+  <div class="gallery-container" id="galleryContainer"></div>
 </div>
+<canvas id="particles"></canvas>
 
 
 <script>
@@ -286,85 +305,49 @@ for(let i=0;i<petalCount;i++){
  p.style.animationDuration=(6+Math.random()*4)+'s';
  document.body.appendChild(p);
 }
-
  // MENU
-function toggleMenu(){
- document.getElementById('sideMenu').classList.toggle('active');
-}
-
-// TAB SWITCH
-
-
-// MODAL
-function openModal(src){
- let modal=document.getElementById('imgModal');
- document.getElementById('modalImg').src=src;
- modal.style.display='flex';
-}
-
-function closeModal(){
- document.getElementById('imgModal').style.display='none';
-}
-
-// AUTO CLOSE MENU (pro UX)
-window.addEventListener('click',(e)=>{
- let menu=document.getElementById('sideMenu');
- let btn=document.querySelector('.menu-btn');
-
- if(!menu.contains(e.target) && !btn.contains(e.target)){
-   menu.classList.remove('active');
- }
-});
- 
- // MENU
-function toggleMenu(){
- document.getElementById('sideMenu').classList.toggle('active');
-}
-
-// TAB SWITCH
-
-
-// MODAL
-function openModal(src){
- let modal=document.getElementById('imgModal');
- document.getElementById('modalImg').src=src;
- modal.style.display='flex';
-}
-
-function closeModal(){
- document.getElementById('imgModal').style.display='none';
-}
- // ✅ Make functions global
 window.toggleMenu = function(){
  document.getElementById('sideMenu').classList.toggle('active');
 };
 
-window.openTab = function(tab){
- document.querySelectorAll('.tab-content').forEach(t=>t.style.display='none');
- document.getElementById(tab).style.display='grid';
+// IMAGE DATA
+const galleries = {
+ haldi: [
+  "haldi1.jpg",
+  "haldi2.jpg",
+  "haldi3.jpg",
+  "haldi4.jpg",
+  "haldi5.jpg"
+ ],
+ reception: [
+  "rec1.jpg",
+  "rec2.jpg",
+  "rec3.jpg",
+  "rec4.jpg",
+  "rec5.jpg"
+ ]
 };
 
-window.openModal = function(src){
- let modal=document.getElementById('imgModal');
- document.getElementById('modalImg').src=src;
- modal.style.display='flex';
+// OPEN GALLERY
+window.openGallery = function(type){
+ let modal = document.getElementById("galleryModal");
+ let container = document.getElementById("galleryContainer");
+
+ container.innerHTML = "";
+
+ galleries[type].forEach(img=>{
+   let image = document.createElement("img");
+   image.src = img;
+   container.appendChild(image);
+ });
+
+ modal.style.display = "flex";
 };
 
-window.closeModal = function(){
- document.getElementById('imgModal').style.display='none';
+// CLOSE GALLERY
+document.getElementById("galleryModal").onclick = function(){
+ this.style.display = "none";
 };
-
-// ✅ Close menu when clicking outside
-window.addEventListener('click',(e)=>{
- let menu=document.getElementById('sideMenu');
- let btn=document.querySelector('.menu-btn');
-
- if(menu && btn){
-   if(!menu.contains(e.target) && !btn.contains(e.target)){
-     menu.classList.remove('active');
-   }
- }
-});
 </script>
 
 <video autoplay muted loop playsinline>
