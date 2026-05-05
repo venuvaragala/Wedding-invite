@@ -207,13 +207,72 @@ body{
 
 </div>
 
-<audio id="bgm" loop>
+<audio id="bgm" loop preload="auto">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
-
+<div onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;background:gold;padding:10px;border-radius:50%;">
+🔊
+</div>
 <div class="music-btn" onclick="toggleMusic()">🔊</div>
 
 <script>
+
+  let audio = document.getElementById("bgm");
+let started = false;
+
+// autoplay after first interaction
+function startMusic(){
+  if(!started){
+    audio.volume = 0.6;
+
+    let playPromise = audio.play();
+
+    if(playPromise !== undefined){
+      playPromise.catch(()=>{}); // prevent error in browser
+    }
+
+    started = true;
+  }
+}
+
+// trigger on interaction
+["click","touchstart","scroll"].forEach(event=>{
+  window.addEventListener(event, startMusic, {once:true});
+});
+
+// manual toggle
+function toggleMusic(){
+  if(audio.paused){
+    audio.play();
+  }else{
+    audio.pause();
+  }
+}
+
+  // 🚫 Disable right click
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// 🚫 Disable text selection
+document.addEventListener("selectstart", e => e.preventDefault());
+
+// 🚫 Disable drag (image saving)
+document.addEventListener("dragstart", e => e.preventDefault());
+
+// 🚫 Disable keyboard shortcuts
+document.addEventListener("keydown", function(e){
+
+  // Ctrl+C / Ctrl+U / Ctrl+S / Ctrl+A
+  if(e.ctrlKey && ['c','u','s','a'].includes(e.key.toLowerCase())){
+    e.preventDefault();
+  }
+
+  // F12 (dev tools)
+  if(e.key === "F12"){
+    e.preventDefault();
+  }
+
+});
+  
 /* 🎵 SMART MUSIC */
 let started=false;
 window.addEventListener('click',()=>{
