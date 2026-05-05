@@ -16,35 +16,40 @@
 
 body{
   font-family:'Inter',sans-serif;
-  background:#000;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* 🎥 HERO SECTION */
-.hero{
-  height:100vh;
+/* 🔥 TRUE FIXED BACKGROUND */
+.bg-fixed{
+  position:fixed;
+  top:0;
+  left:0;
   width:100%;
-  position:relative;
+  height:100%;
   background:url("background.jpg") center top / cover no-repeat;
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
+  z-index:-2;
 }
 
-/* 🌫 CINEMATIC OVERLAY */
-.hero::before{
+/* 🌫 OVERLAY */
+.bg-fixed::after{
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at center, rgba(0,0,0,0.2), rgba(0,0,0,0.9));
+  background:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.85));
+}
+
+/* 🎥 HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
 }
 
 /* ✨ TOP GLASS TITLE */
 .top-names{
-  position:relative;
   margin-top:50px;
-  z-index:2;
   text-align:center;
   padding:18px 28px;
   border-radius:18px;
@@ -79,12 +84,10 @@ body{
 .content{
   padding:25px 18px 40px;
   text-align:center;
-  background:linear-gradient(to bottom, transparent, #000);
   margin-top:-60px;
-  border-radius:20px 20px 0 0;
 }
 
-/* 💍 DETAILS CARD */
+/* 💍 GLASS CARD */
 .card{
   padding:20px;
   border-radius:20px;
@@ -102,11 +105,9 @@ body{
   line-height:1.8;
 }
 
-/* ⏳ COUNTDOWN */
 .countdown{
   margin-top:15px;
   font-size:14px;
-  opacity:0.9;
 }
 
 /* 🔘 BUTTONS */
@@ -146,16 +147,21 @@ body{
   100%{background-position:200%;}
 }
 
-/* 📱 RESPONSIVE */
+/* 📱 MOBILE TUNING */
 @media (max-width:768px){
-  .names{font-size:2rem;}
+  .names{
+    font-size:2rem;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎥 HERO -->
+<!-- 🔥 FIXED BACKGROUND -->
+<div class="bg-fixed"></div>
+
+<!-- HERO -->
 <div class="hero">
   <div class="top-names">
     <div class="names">Venu weds Sowmya</div>
@@ -163,7 +169,7 @@ body{
   </div>
 </div>
 
-<!-- 📦 CONTENT -->
+<!-- CONTENT -->
 <div class="content">
 
   <div class="card">
@@ -185,7 +191,7 @@ body{
 </div>
 
 <script>
-// countdown
+// ⏳ COUNTDOWN
 let target=new Date("May 10, 2026 10:25:00").getTime();
 setInterval(()=>{
  let d=target-Date.now();
@@ -195,11 +201,12 @@ setInterval(()=>{
  document.getElementById("countdown").innerHTML=`⏳ ${days}d ${hrs}h ${min}m left`;
 },1000);
 
-// actions
+// 📍 LOCATION
 function openMap(){
  window.open("https://maps.app.goo.gl/e5nKVW6cyCUn4xvr6?g_st=aw");
 }
 
+// 📤 SHARE
 function shareWA(){
  window.open(`https://wa.me/?text=${encodeURIComponent(window.location.href)}`);
 }
