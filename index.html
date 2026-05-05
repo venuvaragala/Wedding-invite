@@ -68,6 +68,11 @@ body{
 }
 
 @media (max-width:768px){
+  body{
+    height:auto;
+    min-height:100vh;
+  }
+}
 
   .top-names{
     top:5%;
@@ -328,6 +333,59 @@ window.openGallery = function(type){
 document.getElementById("galleryModal").onclick = function(){
  this.style.display = "none";
 };
+
+  @media (max-width:768px){
+
+  body{
+    overflow-y:auto;
+  }
+
+  /* remove absolute positioning */
+  .top-names,
+  .left-panel,
+  .right-panel,
+  .center{
+    position:relative !important;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    transform:none !important;
+
+    width:90%;
+    margin:12px auto;
+  }
+
+  /* spacing */
+  .top-names{
+    margin-top:20px;
+    text-align:center;
+  }
+
+  .left-panel{
+    margin-top:10px;
+  }
+
+  .countdown{
+    margin-top:10px;
+  }
+
+  /* buttons at bottom */
+  .right-panel{
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+    justify-content:space-between;
+    margin-bottom:25px;
+  }
+
+  .btn{
+    flex:1;
+    padding:12px;
+    font-size:14px;
+  }
+
+}
+  
 </style>
 </head>
 
