@@ -68,6 +68,11 @@ body{
 }
 
 @media (max-width:768px){
+  .names{
+    font-size:2rem;
+    transform:none;
+  }
+}
 
   .top-names{
     top:5%;
@@ -89,15 +94,24 @@ body{
 
 }
 .names{
- font-family: 'Playfair Display', serif;
- font-size:2.7rem;
- font-weight:700;
- letter-spacing:3px;
- background:linear-gradient(90deg,#ffffff,#ffd1dc,#ffffff);
- background-size:200% auto;
- -webkit-background-clip:text;
- color:transparent;
- animation:fadeUp 1.2s ease forwards, shine 4s linear infinite;
+  font-family: 'Playfair Display', serif;
+  font-size:3rem;
+  font-weight:700;
+  letter-spacing:3px;
+
+  background: linear-gradient(135deg, #fff, #ffd1dc, #fff);
+  -webkit-background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 1px 0 #fff,
+    0 2px 0 #f8c8dc,
+    0 3px 0 #f3a6c0,
+    0 4px 6px rgba(0,0,0,0.25),
+    0 8px 20px rgba(0,0,0,0.35);
+
+  transform: perspective(500px) rotateX(8deg);
+  animation: shine3d 6s linear infinite;
 }
 @keyframes shine{
  0%{background-position:0% center;}
@@ -328,6 +342,12 @@ window.openGallery = function(type){
 document.getElementById("galleryModal").onclick = function(){
  this.style.display = "none";
 };
+
+  @keyframes shine3d{
+  0%{background-position:0%;}
+  100%{background-position:200%;}
+}
+  
 </style>
 </head>
 
