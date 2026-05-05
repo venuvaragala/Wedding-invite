@@ -3,316 +3,693 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Venu weds Sowmya 💍</title>
+<title>Venu weds Sowmya Wedding</title>
 
-<meta property="og:title" content="Venu weds Sowmya 💍">
-<meta property="og:description" content="Together with love & blessings, we invite you to our wedding celebration.">
+<meta property="og:title" content="Venu weds Sowmya Wedding 💍">
+<meta property="og:description" content="A new chapter begins. Join us on May 10, 2026.">
 <meta property="og:image" content="https://venuvaragala.github.io/Wedding-invite/preview.jpg">
 <meta property="og:url" content="https://venuvaragala.github.io/Wedding-invite/">
-<meta property="og:type" content="website">
-
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="https://venuvaragala.github.io/Wedding-invite/">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
+*{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;}
 body{
   font-family:'Inter',sans-serif;
+  background: url("background.jpg") center center / cover no-repeat fixed;
   color:#fff;
-  overflow-x:hidden;
-  scroll-behavior:smooth;
+  overflow:hidden;
 }
 
-/* 🔥 FIXED BACKGROUND (LIGHTWEIGHT) */
-.bg-fixed{
-  position:fixed;
-  inset:0;
-  background:url("background.jpg") center top / cover no-repeat;
-  z-index:-2;
-}
+.overlay{position:fixed;width:100%;height:100%;background:radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(0,0,0,0.9));z-index:-1;transition:background 0.15s ease;will-change:background;}
 
-/* 🌫 LIGHT OVERLAY (LESS HEAVY) */
-.bg-fixed::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
-}
+.petal{position:fixed;top:-10px;width:8px;height:8px;background:#ffb6c1;border-radius:50%;opacity:0.7;animation:fall linear infinite;will-change:transform;}
+@keyframes fall{to{transform:translateY(110vh) translateX(40px);opacity:0;} }
 
-/* 🎥 HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-}
+/* ===== ADD BELOW YOUR EXISTING CSS ===== */
 
-/* 💎 TITLE */
 .top-names{
-  margin-top:40px;
+  position:absolute;
+  top:8%;
+  left:50%;
+  transform:translateX(-50%);
   text-align:center;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.08);
   padding:15px 25px;
-  border-radius:15px;
+  border-radius:16px;
+}
 
-  background:rgba(255,215,0,0.15);
+.left-panel{
+  position:absolute;
+  left:5%;
+  top:50%;
+  transform:translateY(-50%);
   backdrop-filter: blur(6px);
-
-  border:1px solid rgba(255,215,0,0.4);
-
-  animation:fadeUp 1s ease;
-}
-
-/* ✨ TEXT */
-.names{
-  font-family:'Playfair Display', serif;
-  font-size:2.1rem;
-
-  background:linear-gradient(135deg,#ffd700,#fff,#ffd700);
-  background-size:200%;
-  -webkit-background-clip:text;
-  color:transparent;
-
-  animation:shine 5s linear infinite;
-}
-
-.tagline{
-  font-size:12px;
-  margin-top:5px;
-}
-
-/* 📦 CONTENT */
-.content{
-  padding:20px;
-  text-align:center;
-}
-
-/* 💍 CARD */
-.card{
+  background: rgba(255,255,255,0.08);
   padding:18px;
-  border-radius:18px;
-
-  background:rgba(255,215,0,0.12);
-  backdrop-filter: blur(6px);
-
-  border:1px solid rgba(255,215,0,0.3);
-
-  opacity:0;
-  transform:translateY(30px);
-  transition:0.8s ease;
+  border-radius:16px;
+  max-width:220px;
 }
 
-.card.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.details{
-  font-size:15px;
-  line-height:1.8;
-}
-
-/* ⏳ */
-.countdown{
-  margin-top:12px;
-  font-size:14px;
-}
-
-/* 🔘 BUTTONS */
-.actions{
-  margin-top:15px;
+.right-panel{
+  position:absolute;
+  right:5%;
+  top:50%;
+  transform:translateY(-50%);
   display:flex;
-  gap:10px;
+  flex-direction:column;
+  gap:12px;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.08);
+  padding:18px;
+  border-radius:16px;
 }
 
-.btn{
-  flex:1;
-  padding:12px;
-  border-radius:20px;
-  border:none;
-  font-size:14px;
-
-  background:linear-gradient(135deg,#ffd700,#ffcc00);
-  color:#000;
-}
-
-/* 🎵 BUTTON */
-.music-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#ffd700;
-  color:#000;
-  padding:10px;
-  border-radius:50%;
-}
-
-/* ✨ ANIMATIONS */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes shine{
-  from{background-position:0%;}
-  to{background-position:200%;}
-}
-
-/* 📱 MOBILE SMOOTH FIX */
 @media (max-width:768px){
 
-  .names{font-size:1.9rem;}
-
-  .hero{
-    height:100vh;
+  .top-names{
+    top:5%;
+    width:90%;
   }
 
-  .content{
-    margin-top:-30px;
+  .left-panel,
+  .right-panel{
+    position:static;
+    transform:none;
+    width:90%;
+    margin:10px auto;
+  }
+
+  .right-panel{
+    flex-direction:row;
+    justify-content:center;
   }
 
 }
+.names{
+ font-family: 'Playfair Display', serif;
+ font-size:2.7rem;
+ font-weight:700;
+ letter-spacing:3px;
+ background:linear-gradient(90deg,#ffffff,#ffd1dc,#ffffff);
+ background-size:200% auto;
+ -webkit-background-clip:text;
+ color:transparent;
+ animation:fadeUp 1.2s ease forwards, shine 4s linear infinite;
+}
+@keyframes shine{
+ 0%{background-position:0% center;}
+ 100%{background-position:200% center;}
+}
+.tagline{
+ margin-top:10px;
+ font-size:14px;
+ font-weight:500;
+ letter-spacing:1px;
+ text-transform:uppercase;
+ opacity:0.85;
+ animation:fadeUp 1.2s ease forwards;
+ animation-delay:0.4s;
+}
+.divider{margin:18px auto;width:70px;height:2px;background:linear-gradient(90deg,#ff7eb3,#65d6ff,#ff7eb3);background-size:200% 100%;animation:glowLine 3s linear infinite;}
+.details{
+ font-size:15px;
+ font-weight:500;
+ letter-spacing:0.5px;
+ line-height:1.7;
+ opacity:0;
+ animation:fadeUp 1.2s ease forwards;
+ animation-delay:0.8s;
+}
+.actions{margin-top:15px;display:flex;gap:8px;justify-content:center;opacity:0;animation:fadeUp 1.2s ease forwards;animation-delay:1.2s;}
+.btn{
+  flex:1;
+  padding:11px 14px;
+  border-radius:22px;
+  border:none;
+  font-size:13px;
+  cursor:pointer;
+  font-weight:600;
+  letter-spacing:0.6px;
+  color:#fff;
+
+  background:linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+  backdrop-filter:blur(10px);
+
+  transition:all 0.35s ease;
+  position:relative;
+  overflow:hidden;
+
+  animation:idlePulse 3s infinite ease-in-out;
+}
+
+/* ✨ Hover = Highlight */
+.btn:hover{
+  background:linear-gradient(135deg,#ff7eb3,#65d6ff);
+  color:#000;
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* 💡 Shine sweep */
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transition:0.6s;
+}
+
+.btn:hover::before{
+  left:120%;
+}
+
+/* 🌊 Idle pulse (very subtle) */
+@keyframes idlePulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.02);}
+}
+.countdown{margin-top:12px;font-size:13px;opacity:0;animation:fadeUp 1.2s ease forwards;animation-delay:1.6s;}
+
+
+
+@keyframes move{0%{transform:translate(0,0)}100%{transform:translate(150px,120px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}
+@keyframes glowLine{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}
+
+.music{position:fixed;bottom:15px;right:15px;background:#fff;color:#000;padding:8px;border-radius:50%;cursor:pointer;}
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+
+
+/* 🎯 CINEMATIC CURSOR */
+.cursor{
+ position:fixed;top:0;left:0;width:12px;height:12px;border-radius:50%;
+ background:rgba(255,255,255,0.9);
+ pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+ box-shadow:0 0 12px rgba(255,255,255,0.8),0 0 25px rgba(255,255,255,0.5);
+}
+
+.trail{
+ position:fixed;width:6px;height:6px;border-radius:50%;
+ background:rgba(255,255,255,0.5);
+ pointer-events:none;z-index:9998;
+ transform:translate(-50%,-50%);
+}
+
+.ripple{
+ position:fixed;border-radius:50%;border:2px solid rgba(255,255,255,0.6);
+ pointer-events:none;z-index:9997;
+ animation:rippleAnim 0.6s ease-out forwards;
+}
+@keyframes rippleAnim{
+ from{transform:scale(0.2);opacity:1;}
+ to{transform:scale(2);opacity:0;}
+}
+
+
+
+/* 🎯 CURSOR HOVER STATES */
+.cursor.active{
+ transform:translate(-50%,-50%) scale(1.8);
+ background:rgba(255,255,255,0.4);
+}
+ 
+ /* MENU BUTTON */
+.menu-btn{
+ position:fixed;
+ top:15px;
+ right:15px;
+ background:rgba(255,255,255,0.2);
+ backdrop-filter:blur(10px);
+ padding:10px 14px;
+ border-radius:12px;
+ cursor:pointer;
+ z-index:10000;
+}
+
+/* SIDE MENU */
+.side-menu{
+ position:fixed;
+ top:0;
+ right:-100%;
+ width:260px;
+ height:100%;
+ background:rgba(255,255,255,0.08);
+ backdrop-filter:blur(18px);
+ transition:0.4s;
+ padding:15px;
+ z-index:10000;
+}
+.side-menu.active{right:0;}
+
+.tabs button{
+ width:100%;
+ margin:5px 0;
+ padding:10px;
+ border:none;
+ border-radius:10px;
+ background:rgba(255,255,255,0.15);
+ color:#fff;
+ cursor:pointer;
+}
+
+/* FULL SCREEN GALLERY */
+.modal{
+ display:none;
+ position:fixed;
+ top:0;
+ left:0;
+ width:100%;
+ height:100%;
+ background:rgba(0,0,0,0.8);
+ backdrop-filter:blur(15px);
+ justify-content:center;
+ align-items:center;
+ z-index:20000;
+}
+
+.gallery-container{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+ padding:20px;
+ max-width:500px;
+}
+
+.gallery-container img{
+ width:100%;
+ border-radius:15px;
+}
+// MENU
+window.toggleMenu = function(){
+ document.getElementById('sideMenu').classList.toggle('active');
+};
+
+// IMAGE DATA
+const galleries = {
+ haldi: [
+  "haldi1.jpg",
+  "haldi2.jpg",
+  "haldi3.jpg",
+  "haldi4.jpg",
+  "haldi5.jpg"
+ ],
+ reception: [
+  "rec1.jpg",
+  "rec2.jpg",
+  "rec3.jpg",
+  "rec4.jpg",
+  "rec5.jpg"
+ ]
+};
+
+// OPEN GALLERY
+window.openGallery = function(type){
+ let modal = document.getElementById("galleryModal");
+ let container = document.getElementById("galleryContainer");
+
+ container.innerHTML = "";
+
+ galleries[type].forEach(img=>{
+   let image = document.createElement("img");
+   image.src = img;
+   container.appendChild(image);
+ });
+
+ modal.style.display = "flex";
+};
+
+// CLOSE GALLERY
+document.getElementById("galleryModal").onclick = function(){
+ this.style.display = "none";
+};
 </style>
 </head>
 
-<body>
+<body oncontextmenu="return false">
 
-<div class="bg-fixed"></div>
+<div class="cursor" id="cursor"></div>
+<!-- ☰ MENU -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<div class="hero">
-  <div class="top-names">
-    <div class="names">Venu weds Sowmya</div>
-    <div class="tagline">Together with love & blessings</div>
+<div class="side-menu" id="sideMenu">
+  <div class="menu-header">
+    <span>Wedding Events</span>
+    <button onclick="toggleMenu()">✖</button>
+  </div>
+
+  <div class="tabs">
+    <button onclick="openGallery('haldi')">Haldi</button>
+    <button onclick="openGallery('reception')">Reception</button>
   </div>
 </div>
 
-<div class="content">
-
-  <div class="card" id="card">
-    <div class="details">
-      📍 Thotapally<br>
-      🗓 Sunday, May 10, 2026<br>
-      ⏰ Muhurtham: 10:25 AM<br>
-      ✨ Wedding Ceremony
-    </div>
-
-    <div class="countdown" id="countdown"></div>
-  </div>
-
-  <div class="actions">
-    <button class="btn" onclick="openMap()">📍 Location</button>
-    <button class="btn" onclick="shareWA()">📤 Share</button>
-  </div>
-
+<!-- 🖼 FULL SCREEN GALLERY -->
+<div class="modal" id="galleryModal">
+  <div class="gallery-container" id="galleryContainer"></div>
 </div>
+<canvas id="particles"></canvas>
 
-<audio id="bgm" loop preload="auto">
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-<div onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;background:gold;padding:10px;border-radius:50%;">
-🔊
-</div>
-<div class="music-btn" onclick="toggleMusic()">🔊</div>
 
 <script>
-
-  let audio = document.getElementById("bgm");
-let started = false;
-
-// autoplay after first interaction
-function startMusic(){
-  if(!started){
-    audio.volume = 0.6;
-
-    let playPromise = audio.play();
-
-    if(playPromise !== undefined){
-      playPromise.catch(()=>{}); // prevent error in browser
-    }
-
-    started = true;
-  }
+const isMobile = window.innerWidth < 768;
+const petalCount = isMobile ? 10 : 20;
+for(let i=0;i<petalCount;i++){
+ let p=document.createElement('div');
+ p.className='petal';
+ p.style.left=Math.random()*100+'vw';
+ p.style.animationDuration=(6+Math.random()*4)+'s';
+ document.body.appendChild(p);
 }
+ // MENU
+window.toggleMenu = function(){
+ document.getElementById('sideMenu').classList.toggle('active');
+};
 
-// trigger on interaction
-["click","touchstart","scroll"].forEach(event=>{
-  window.addEventListener(event, startMusic, {once:true});
-});
+// IMAGE DATA
+const galleries = {
+ haldi: [
+  "haldi1.jpg",
+  "haldi2.jpg",
+  "haldi3.jpg",
+  "haldi4.jpg",
+  "haldi5.jpg"
+ ],
+ reception: [
+  "rec1.jpg",
+  "rec2.jpg",
+  "rec3.jpg",
+  "rec4.jpg",
+  "rec5.jpg"
+ ]
+};
 
-// manual toggle
-function toggleMusic(){
-  if(audio.paused){
-    audio.play();
-  }else{
-    audio.pause();
-  }
-}
+// OPEN GALLERY
+window.openGallery = function(type){
+ let modal = document.getElementById("galleryModal");
+ let container = document.getElementById("galleryContainer");
 
-  // 🚫 Disable right click
-document.addEventListener("contextmenu", e => e.preventDefault());
+ container.innerHTML = "";
 
-// 🚫 Disable text selection
-document.addEventListener("selectstart", e => e.preventDefault());
+ galleries[type].forEach(img=>{
+   let image = document.createElement("img");
+   image.src = img;
+   container.appendChild(image);
+ });
 
-// 🚫 Disable drag (image saving)
-document.addEventListener("dragstart", e => e.preventDefault());
+ modal.style.display = "flex";
+};
 
-// 🚫 Disable keyboard shortcuts
-document.addEventListener("keydown", function(e){
+// CLOSE GALLERY
+document.getElementById("galleryModal").onclick = function(){
+ this.style.display = "none";
+};
+</script>
 
-  // Ctrl+C / Ctrl+U / Ctrl+S / Ctrl+A
-  if(e.ctrlKey && ['c','u','s','a'].includes(e.key.toLowerCase())){
-    e.preventDefault();
-  }
 
-  // F12 (dev tools)
-  if(e.key === "F12"){
-    e.preventDefault();
-  }
+<div class="overlay"></div>
 
-});
-  
-/* 🎵 SMART MUSIC */
+<audio id="bgm" loop><source src="music.mp3" type="audio/mpeg"></audio>
+<audio id="mantra" loop><source src="mantra.mp3" type="audio/mpeg"></audio>
+
+<div class="music" onclick="playMusic()">🔊</div>
+
+<div class="top-names">
+  <div class="names">Venu weds Sowmya</div>
+  <div class="tagline">Together with love & blessings</div>
+</div>
+
+<div class="left-panel">
+  <div class="details">
+    📍 Thotapally<br>
+    🗓 Sunday, May 10, 2026<br>
+    ⏰ Muhurtham: 10:25 AM<br>
+    ✨ Wedding Ceremony
+  </div>
+  <div class="countdown" id="countdown"></div>
+</div>
+
+<div class="right-panel">
+  <button class="btn" onclick="openMap()">📍 Location</button>
+  <button class="btn" onclick="shareWA()">📤 Share</button>
+</div>
+
+<script>
+// AUDIO + ANALYSER (for beat sync)
 let started=false;
-window.addEventListener('click',()=>{
- if(!started){
-   document.getElementById("bgm").play();
-   started=true;
- }
-},{once:true});
+let audioCtx, analyser, dataArray;
 
-function toggleMusic(){
- let a=document.getElementById("bgm");
- a.paused ? a.play() : a.pause();
+function initAudio(){
+ if(audioCtx) return;
+ audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+ const bgm = document.getElementById("bgm");
+ const source = audioCtx.createMediaElementSource(bgm);
+ analyser = audioCtx.createAnalyser();
+ analyser.fftSize = 256;
+ dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+ source.connect(analyser);
+ analyser.connect(audioCtx.destination);
 }
 
-/* ⏳ COUNTDOWN */
+function playMusic(){
+ if(started) return;
+ started=true;
+ initAudio();
+ let bgm=document.getElementById("bgm");
+ let mantra=document.getElementById("mantra");
+ bgm.volume=0.6; mantra.volume=0.2;
+ bgm.play(); mantra.play();
+}
+
+window.addEventListener('click',playMusic,{once:true, passive:true});
+
+// COUNTDOWN
 let target=new Date("May 10, 2026 10:25:00").getTime();
 setInterval(()=>{
  let d=target-Date.now();
  let days=Math.floor(d/(1000*60*60*24));
  let hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
  let min=Math.floor((d%(1000*60*60))/(1000*60));
- document.getElementById("countdown").innerHTML=`⏳ ${days}d ${hrs}h ${min}m`;
+ document.getElementById("countdown").innerHTML=`⏳ ${days}d ${hrs}h ${min}m left`;
 },1000);
 
-/* 🎬 SCROLL */
-window.addEventListener("scroll",()=>{
- let card=document.getElementById("card");
- if(card.getBoundingClientRect().top < window.innerHeight - 80){
-   card.classList.add("show");
+function openMap(){window.open("https://maps.app.goo.gl/e5nKVW6cyCUn4xvr6?g_st=aw","_blank");}
+function shareWA(){window.open(`https://wa.me/?text=${encodeURIComponent(window.location.href)}`);}
+
+// PARTICLES + ADAPTIVE PERFORMANCE
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+let dpr=Math.min(window.devicePixelRatio,1.5);
+
+function resizeCanvas(){
+ canvas.width=innerWidth*dpr;
+ canvas.height=innerHeight*dpr;
+ ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+resizeCanvas();
+
+let baseCount = isMobile ? 40 : 70;
+let particleCount = baseCount;
+let particles=[];
+
+function initParticles(count){
+ particles=[];
+ for(let i=0;i<count;i++){
+  particles.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*800,size:Math.random()*1.5});
  }
+}
+initParticles(particleCount);
+
+let mouse={x:innerWidth/2,y:innerHeight/2};
+window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;},{passive:true});
+
+let lastTime=performance.now();
+let fps=60;
+
+function draw(now){
+ let delta=now-lastTime;
+ fps=1000/delta;
+ lastTime=now;
+
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ for(let p of particles){
+   let scale=800/(800+p.z);
+   let x=(p.x-innerWidth/2)*scale+innerWidth/2;
+   let y=(p.y-innerHeight/2)*scale+innerHeight/2;
+
+   let dx=x-mouse.x, dy=y-mouse.y;
+   let dist=dx*dx+dy*dy;
+   if(dist<8000){x+=dx*0.02;y+=dy*0.02;}
+
+   ctx.beginPath();
+   ctx.arc(x,y,p.size*scale,0,Math.PI*2);
+   // 🎨 PARTICLES COLOR SYNC WITH HUE
+   let particleHue = (hue + p.z*0.05) % 360;
+   ctx.fillStyle=`hsla(${particleHue}, 80%, 70%, 0.5)`;
+   ctx.fill();
+
+   p.z-=1.5; if(p.z<=0) p.z=800;
+ }
+
+ requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+
+// 🧠 ADAPTIVE ENGINE
+setInterval(()=>{
+ if(fps < 30 && particleCount > 20){
+   particleCount -= 10;
+   initParticles(particleCount);
+ }
+ else if(fps > 55 && particleCount < baseCount){
+   particleCount += 5;
+   initParticles(particleCount);
+ }
+},2000);
+
+// PARALLAX (adaptive throttle)
+let last=0;
+window.addEventListener('mousemove',e=>{
+ let now=performance.now();
+ if(now-last<20) return;
+ last=now;
+ let x=(innerWidth/2-e.clientX)/30;
+ let y=(innerHeight/2-e.clientY)/30;
+ document.querySelector('.center').style.transform=`translate(-50%,-50%) rotateY(${x}deg) rotateX(${y}deg)`;
+},{passive:true});
+
+// LIGHT + AUDIO REACTIVE RAINBOW
+let hue = 0;
+window.addEventListener('mousemove',e=>{
+ if(fps < 25) return;
+ let x=e.clientX/innerWidth*100;
+ let y=e.clientY/innerHeight*100;
+
+ let beat = 0;
+ if(analyser){
+   analyser.getByteFrequencyData(dataArray);
+   beat = dataArray.reduce((a,b)=>a+b,0)/dataArray.length;
+ }
+
+ hue = (hue + 1 + beat*0.05) % 360;
+ let intensity = 0.05 + (beat/255)*0.08;
+
+ document.querySelector('.overlay').style.background=
+ `radial-gradient(circle at ${x}% ${y}%, hsla(${hue}, 80%, 60%, ${intensity}), rgba(0,0,0,0.96))`;
+},{passive:true});
+
+window.addEventListener('resize',resizeCanvas);
+
+// 🎯 CURSOR FX
+const cursor=document.getElementById('cursor');
+let trailCount=8;
+let trails=[];
+for(let i=0;i<trailCount;i++){
+ let t=document.createElement('div');
+ t.className='trail';
+ document.body.appendChild(t);
+ trails.push({el:t,x:0,y:0});
+}
+
+window.addEventListener('mousemove',e=>{
+ cursor.style.left=e.clientX+'px';
+ cursor.style.top=e.clientY+'px';
+
+ trails.forEach((t,i)=>{
+   setTimeout(()=>{
+     t.el.style.left=e.clientX+'px';
+     t.el.style.top=e.clientY+'px';
+   },i*20);
+ });
+},{passive:true});
+
+// 💥 CLICK RIPPLE
+window.addEventListener('click',e=>{
+ let r=document.createElement('div');
+ r.className='ripple';
+ r.style.left=e.clientX+'px';
+ r.style.top=e.clientY+'px';
+ r.style.width='20px';
+ r.style.height='20px';
+ document.body.appendChild(r);
+ setTimeout(()=>r.remove(),600);
+});
+</script>
+
+
+
+<audio id="clickSound"><source src="click.mp3" type="audio/mpeg"></audio>
+
+<script>
+
+// 🎯 BUTTON INTERACTION + PROXIMITY FX
+const buttons = document.querySelectorAll('.btn');
+
+window.addEventListener('mousemove',(e)=>{
+ buttons.forEach(btn=>{
+   let rect = btn.getBoundingClientRect();
+   let cx = rect.left + rect.width/2;
+   let cy = rect.top + rect.height/2;
+
+   let dx = e.clientX - cx;
+   let dy = e.clientY - cy;
+   let dist = Math.sqrt(dx*dx + dy*dy);
+
+   // ❌ Glow removed for clean minimal look
+   btn.style.boxShadow = 'none';
+   btn.style.boxShadow = `0 0 ${20*intensity}px rgba(255,255,255,${0.6*intensity})`;
+ });
+},{passive:true});
+
+buttons.forEach(btn=>{
+
+ btn.addEventListener('mouseenter',()=>{
+   cursor.classList.add('active');
+ });
+
+ btn.addEventListener('mouseleave',()=>{
+   cursor.classList.remove('active');
+   btn.style.transform='translate(0,0)';
+   btn.style.boxShadow='none';
+ });
+
+ // 🧲 MAGNETIC EFFECT
+ btn.addEventListener('mousemove',(e)=>{
+   let rect = btn.getBoundingClientRect();
+   let x = e.clientX - rect.left - rect.width/2;
+   let y = e.clientY - rect.top - rect.height/2;
+   btn.style.transform = `translate(${x*0.2}px, ${y*0.2}px)`;
+ });
+
+ // 🔊 DISTANCE BASED SOUND
+ btn.addEventListener('click',(e)=>{
+   let rect = btn.getBoundingClientRect();
+   let cx = rect.left + rect.width/2;
+   let cy = rect.top + rect.height/2;
+
+   let dx = e.clientX - cx;
+   let dy = e.clientY - cy;
+   let dist = Math.sqrt(dx*dx + dy*dy);
+
+   let maxDist = 200;
+   let volume = Math.max(0.2, 1 - dist/maxDist);
+
+   let s=document.getElementById('clickSound');
+   s.currentTime=0;
+   s.volume=volume;
+   s.play();
+ });
+
 });
 
-/* ACTIONS */
-function openMap(){
- window.open("https://maps.app.goo.gl/e5nKVW6cyCUn4xvr6?g_st=aw");
-}
-
-function shareWA(){
- window.open(`https://wa.me/?text=${encodeURIComponent(window.location.href)}`);
-}
 </script>
 
 </body>
