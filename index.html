@@ -24,11 +24,7 @@
   }
 
   /* 🔥 remove all fixed/absolute layout */
-  *{
-    position:relative !important;
-    transform:none !important;
-  }
-
+  
   /* 🔥 main container spacing */
   body{
     padding:10px 0;
@@ -385,6 +381,57 @@ window.openGallery = function(type){
 document.getElementById("galleryModal").onclick = function(){
  this.style.display = "none";
 };
+
+  @media (max-width:768px){
+
+  html, body{
+    height:auto;
+    overflow-y:auto;
+  }
+
+  /* ✅ Keep names centered properly */
+  .top-names{
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    margin-top:20px;
+    text-align:center;
+  }
+
+  /* ✅ Details box */
+  .left-panel{
+    position:relative;
+    width:90%;
+    margin:15px auto;
+    transform:none;
+  }
+
+  /* ✅ Countdown */
+  .countdown{
+    text-align:center;
+    margin-top:10px;
+  }
+
+  /* ✅ Buttons at bottom */
+  .right-panel{
+    position:relative;
+    width:90%;
+    margin:20px auto 30px;
+
+    display:flex;
+    gap:10px;
+    justify-content:space-between;
+  }
+
+  .btn{
+    flex:1;
+    padding:12px;
+    font-size:14px;
+  }
+
+}
+  
 </style>
 </head>
 
