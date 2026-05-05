@@ -14,67 +14,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
-  /* 📱 MOBILE CLEAN FIX */
-@media (max-width:768px){
-
-  body{
-    overflow:auto; /* allow scroll */
-  }
-
-  /* TOP NAMES */
-  .top-names{
-    position:static;
-    transform:none;
-    width:90%;
-    margin:15px auto 10px;
-    text-align:center;
-  }
-
-  /* DETAILS BOX */
-  .left-panel{
-    position:static;
-    transform:none;
-    width:90%;
-    margin:10px auto;
-    text-align:left;
-  }
-
-  /* BUTTONS */
-  .right-panel{
-    position:static;
-    transform:none;
-    width:90%;
-    margin:10px auto 20px;
-
-    display:flex;
-    flex-direction:row;
-    gap:10px;
-    justify-content:space-between;
-  }
-
-  .btn{
-    flex:1;
-    font-size:14px;
-    padding:12px;
-  }
-
-  /* CENTER SPACING */
-  .center{
-    position:static;
-    transform:none;
-    width:90%;
-    margin:10px auto;
-  }
-
-  /* FIX OVERLAY TOO DARK */
-  .overlay{
-    background:
-      radial-gradient(circle at 80% 90%, rgba(255,0,150,0.15), transparent 50%),
-      radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.85));
-  }
-
-}
-  
 *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;}
 body{
   font-family:'Inter',sans-serif;
@@ -389,17 +328,6 @@ window.openGallery = function(type){
 document.getElementById("galleryModal").onclick = function(){
  this.style.display = "none";
 };
-
-  @media (max-width:768px){
-  .names{
-    font-size:2rem;
-  }
-
-  .tagline{
-    font-size:12px;
-  }
-}
-  
 </style>
 </head>
 
