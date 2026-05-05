@@ -14,9 +14,10 @@ body{
   font-family:'Inter',sans-serif;
   color:#fff;
   overflow-x:hidden;
+  scroll-behavior:smooth;
 }
 
-/* 🔥 FIXED BACKGROUND */
+/* 🔥 FIXED BACKGROUND (LIGHTWEIGHT) */
 .bg-fixed{
   position:fixed;
   inset:0;
@@ -24,13 +25,12 @@ body{
   z-index:-2;
 }
 
-/* 🌫 GOLD OVERLAY */
+/* 🌫 LIGHT OVERLAY (LESS HEAVY) */
 .bg-fixed::after{
   content:"";
   position:absolute;
   inset:0;
-  background:
-    radial-gradient(circle at center, rgba(255,215,0,0.15), rgba(0,0,0,0.9));
+  background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
 }
 
 /* 🎥 HERO */
@@ -41,64 +41,60 @@ body{
   align-items:flex-start;
 }
 
-/* 💎 GOLD GLASS TITLE */
+/* 💎 TITLE */
 .top-names{
-  margin-top:50px;
+  margin-top:40px;
   text-align:center;
-  padding:18px 28px;
-  border-radius:20px;
+  padding:15px 25px;
+  border-radius:15px;
 
-  background:linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,255,255,0.05));
-  backdrop-filter:blur(14px);
+  background:rgba(255,215,0,0.15);
+  backdrop-filter: blur(6px);
 
   border:1px solid rgba(255,215,0,0.4);
-  box-shadow:0 10px 40px rgba(255,215,0,0.2);
 
-  animation:fadeUp 1.2s ease;
+  animation:fadeUp 1s ease;
 }
 
+/* ✨ TEXT */
 .names{
   font-family:'Playfair Display', serif;
-  font-size:2.3rem;
+  font-size:2.1rem;
 
   background:linear-gradient(135deg,#ffd700,#fff,#ffd700);
   background-size:200%;
   -webkit-background-clip:text;
   color:transparent;
 
-  text-shadow:0 4px 20px rgba(255,215,0,0.5);
-  animation:shine 6s linear infinite;
+  animation:shine 5s linear infinite;
 }
 
 .tagline{
-  margin-top:6px;
   font-size:12px;
-  opacity:0.85;
+  margin-top:5px;
 }
 
 /* 📦 CONTENT */
 .content{
-  padding:25px 18px 50px;
+  padding:20px;
   text-align:center;
 }
 
-/* 💍 GOLD CARD */
+/* 💍 CARD */
 .card{
-  padding:22px;
-  border-radius:22px;
+  padding:18px;
+  border-radius:18px;
 
-  background:linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,255,255,0.04));
-  backdrop-filter:blur(14px);
+  background:rgba(255,215,0,0.12);
+  backdrop-filter: blur(6px);
 
-  border:1px solid rgba(255,215,0,0.4);
-  box-shadow:0 10px 50px rgba(255,215,0,0.2);
+  border:1px solid rgba(255,215,0,0.3);
 
   opacity:0;
-  transform:translateY(40px);
-  transition:all 1s ease;
+  transform:translateY(30px);
+  transition:0.8s ease;
 }
 
-/* 🎬 SCROLL ANIMATION ACTIVE */
 .card.show{
   opacity:1;
   transform:translateY(0);
@@ -106,18 +102,18 @@ body{
 
 .details{
   font-size:15px;
-  line-height:1.9;
+  line-height:1.8;
 }
 
-/* ⏳ COUNTDOWN */
+/* ⏳ */
 .countdown{
-  margin-top:15px;
+  margin-top:12px;
   font-size:14px;
 }
 
-/* 🔘 GOLD BUTTONS */
+/* 🔘 BUTTONS */
 .actions{
-  margin-top:20px;
+  margin-top:15px;
   display:flex;
   gap:10px;
 }
@@ -125,47 +121,49 @@ body{
 .btn{
   flex:1;
   padding:12px;
-  border-radius:25px;
+  border-radius:20px;
   border:none;
   font-size:14px;
-  font-weight:600;
-  cursor:pointer;
 
-  color:#000;
   background:linear-gradient(135deg,#ffd700,#ffcc00);
-
-  box-shadow:0 5px 20px rgba(255,215,0,0.4);
+  color:#000;
 }
 
-.btn:active{transform:scale(0.95);}
-
-/* 🎵 MUSIC BUTTON */
+/* 🎵 BUTTON */
 .music-btn{
   position:fixed;
   bottom:20px;
   right:20px;
   background:#ffd700;
   color:#000;
-  padding:12px;
+  padding:10px;
   border-radius:50%;
-  cursor:pointer;
-  z-index:1000;
 }
 
 /* ✨ ANIMATIONS */
 @keyframes fadeUp{
-  from{opacity:0; transform:translateY(30px);}
-  to{opacity:1; transform:translateY(0);}
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
 @keyframes shine{
-  0%{background-position:0%;}
-  100%{background-position:200%;}
+  from{background-position:0%;}
+  to{background-position:200%;}
 }
 
-/* 📱 MOBILE */
+/* 📱 MOBILE SMOOTH FIX */
 @media (max-width:768px){
-  .names{font-size:2rem;}
+
+  .names{font-size:1.9rem;}
+
+  .hero{
+    height:100vh;
+  }
+
+  .content{
+    margin-top:-30px;
+  }
+
 }
 </style>
 </head>
@@ -174,7 +172,6 @@ body{
 
 <div class="bg-fixed"></div>
 
-<!-- 🎥 HERO -->
 <div class="hero">
   <div class="top-names">
     <div class="names">Venu weds Sowmya</div>
@@ -182,7 +179,6 @@ body{
   </div>
 </div>
 
-<!-- 📦 CONTENT -->
 <div class="content">
 
   <div class="card" id="card">
@@ -203,7 +199,6 @@ body{
 
 </div>
 
-<!-- 🎵 AUDIO -->
 <audio id="bgm" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -211,23 +206,19 @@ body{
 <div class="music-btn" onclick="toggleMusic()">🔊</div>
 
 <script>
-// 🎵 MUSIC AUTOPLAY (SMART)
+/* 🎵 SMART MUSIC */
 let started=false;
-function toggleMusic(){
-  let audio=document.getElementById("bgm");
-  if(audio.paused){
-    audio.play();
-  }else{
-    audio.pause();
-  }
-}
-
 window.addEventListener('click',()=>{
-  if(!started){
-    document.getElementById("bgm").play();
-    started=true;
-  }
+ if(!started){
+   document.getElementById("bgm").play();
+   started=true;
+ }
 },{once:true});
+
+function toggleMusic(){
+ let a=document.getElementById("bgm");
+ a.paused ? a.play() : a.pause();
+}
 
 /* ⏳ COUNTDOWN */
 let target=new Date("May 10, 2026 10:25:00").getTime();
@@ -236,29 +227,25 @@ setInterval(()=>{
  let days=Math.floor(d/(1000*60*60*24));
  let hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
  let min=Math.floor((d%(1000*60*60))/(1000*60));
- document.getElementById("countdown").innerHTML=`⏳ ${days}d ${hrs}h ${min}m left`;
+ document.getElementById("countdown").innerHTML=`⏳ ${days}d ${hrs}h ${min}m`;
 },1000);
 
-/* 📍 */
+/* 🎬 SCROLL */
+window.addEventListener("scroll",()=>{
+ let card=document.getElementById("card");
+ if(card.getBoundingClientRect().top < window.innerHeight - 80){
+   card.classList.add("show");
+ }
+});
+
+/* ACTIONS */
 function openMap(){
  window.open("https://maps.app.goo.gl/e5nKVW6cyCUn4xvr6?g_st=aw");
 }
 
-/* 📤 */
 function shareWA(){
  window.open(`https://wa.me/?text=${encodeURIComponent(window.location.href)}`);
 }
-
-/* 🎬 SCROLL ANIMATION */
-window.addEventListener("scroll",()=>{
- let card=document.getElementById("card");
- let pos=card.getBoundingClientRect().top;
- let screen=window.innerHeight;
-
- if(pos < screen - 100){
-   card.classList.add("show");
- }
-});
 </script>
 
 </body>
