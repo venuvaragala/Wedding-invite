@@ -17,33 +17,15 @@ body{
   scroll-behavior:smooth;
 }
 
-/* 🌑 INTRO */
-.intro{
-  position:fixed;
-  inset:0;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:5000;
-}
-.intro-box{
-  padding:20px 30px;
-  border:2px solid gold;
-  border-radius:20px;
-  color:gold;
-  font-size:18px;
-  cursor:pointer;
-  animation:pulse 2s infinite;
-}
-
-/* 🌄 BACKGROUND */
+/* 🔥 FIXED BACKGROUND (LIGHTWEIGHT) */
 .bg-fixed{
   position:fixed;
   inset:0;
   background:url("background.jpg") center top / cover no-repeat;
   z-index:-2;
 }
+
+/* 🌫 LIGHT OVERLAY (LESS HEAVY) */
 .bg-fixed::after{
   content:"";
   position:absolute;
@@ -51,115 +33,103 @@ body{
   background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
 }
 
-/* ☰ MENU */
-.menu-btn{
-  position:fixed;
-  top:15px;
-  right:15px;
-  background:#ffd700;
-  color:#000;
-  padding:10px;
-  border-radius:10px;
-  z-index:1000;
-}
-.side-menu{
-  position:fixed;
-  top:0;
-  right:-100%;
-  width:250px;
-  height:100%;
-  background:#000;
-  padding:20px;
-  transition:0.4s;
-  z-index:1000;
-}
-.side-menu.active{right:0;}
-.side-menu button{
-  width:100%;
-  margin:10px 0;
-  padding:10px;
-  background:#ffd700;
-  border:none;
-}
-
-/* HERO */
+/* 🎥 HERO */
 .hero{
   height:100vh;
   display:flex;
   justify-content:center;
+  align-items:flex-start;
 }
+
+/* 💎 TITLE */
 .top-names{
   margin-top:40px;
+  text-align:center;
   padding:15px 25px;
-  background:rgba(255,215,0,0.15);
   border-radius:15px;
+
+  background:rgba(255,215,0,0.15);
+  backdrop-filter: blur(6px);
+
+  border:1px solid rgba(255,215,0,0.4);
+
+  animation:fadeUp 1s ease;
 }
+
+/* ✨ TEXT */
 .names{
   font-family:'Playfair Display', serif;
-  font-size:2rem;
+  font-size:2.1rem;
+
   background:linear-gradient(135deg,#ffd700,#fff,#ffd700);
+  background-size:200%;
   -webkit-background-clip:text;
   color:transparent;
+
+  animation:shine 5s linear infinite;
 }
 
-/* CONTENT */
-.content{padding:20px;text-align:center;}
+.tagline{
+  font-size:12px;
+  margin-top:5px;
+}
 
+/* 📦 CONTENT */
+.content{
+  padding:20px;
+  text-align:center;
+}
+
+/* 💍 CARD */
 .card{
   padding:18px;
   border-radius:18px;
+
   background:rgba(255,215,0,0.12);
+  backdrop-filter: blur(6px);
+
+  border:1px solid rgba(255,215,0,0.3);
+
   opacity:0;
   transform:translateY(30px);
-  transition:0.8s;
+  transition:0.8s ease;
 }
+
 .card.show{
   opacity:1;
   transform:translateY(0);
 }
 
-/* BUTTONS */
-.actions{display:flex;gap:10px;margin-top:15px;}
+.details{
+  font-size:15px;
+  line-height:1.8;
+}
+
+/* ⏳ */
+.countdown{
+  margin-top:12px;
+  font-size:14px;
+}
+
+/* 🔘 BUTTONS */
+.actions{
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+}
+
 .btn{
   flex:1;
   padding:12px;
-  border:none;
   border-radius:20px;
-  background:#ffd700;
+  border:none;
+  font-size:14px;
+
+  background:linear-gradient(135deg,#ffd700,#ffcc00);
   color:#000;
 }
 
-/* 🎥 HALDI VIDEO */
-.haldi-section{
-  height:80vh;
-  position:relative;
-}
-.haldi-section video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.haldi-text{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:22px;
-  color:#ffd700;
-}
-
-/* 📸 MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#000;
-  justify-content:center;
-  align-items:center;
-}
-.modal img{width:90%;}
-
-/* 🎵 MUSIC */
+/* 🎵 BUTTON */
 .music-btn{
   position:fixed;
   bottom:20px;
@@ -171,115 +141,72 @@ body{
 }
 
 /* ✨ ANIMATIONS */
-@keyframes pulse{
-  0%{opacity:0.6;}
-  50%{opacity:1;}
-  100%{opacity:0.6;}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes shine{
+  from{background-position:0%;}
+  to{background-position:200%;}
+}
+
+/* 📱 MOBILE SMOOTH FIX */
+@media (max-width:768px){
+
+  .names{font-size:1.9rem;}
+
+  .hero{
+    height:100vh;
+  }
+
+  .content{
+    margin-top:-30px;
+  }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div class="intro" id="intro">
-  <div class="intro-box" onclick="openInvite()">💍 Tap to Open Invitation</div>
-</div>
-
 <div class="bg-fixed"></div>
 
-<!-- MENU -->
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-<div class="side-menu" id="menu">
-  <button onclick="openGallery('haldi')">Haldi</button>
-  <button onclick="openGallery('reception')">Reception</button>
-</div>
-
-<!-- HERO -->
 <div class="hero">
   <div class="top-names">
     <div class="names">Venu weds Sowmya</div>
+    <div class="tagline">Together with love & blessings</div>
   </div>
 </div>
 
-<!-- CONTENT -->
 <div class="content">
+
   <div class="card" id="card">
-    📍 Thotapally<br>
-    🗓 May 10, 2026<br>
-    ⏰ 10:25 AM
-    <div id="countdown"></div>
+    <div class="details">
+      📍 Thotapally<br>
+      🗓 Sunday, May 10, 2026<br>
+      ⏰ Muhurtham: 10:25 AM<br>
+      ✨ Wedding Ceremony
+    </div>
+
+    <div class="countdown" id="countdown"></div>
   </div>
 
   <div class="actions">
     <button class="btn" onclick="openMap()">📍 Location</button>
     <button class="btn" onclick="shareWA()">📤 Share</button>
   </div>
+
 </div>
 
-<!-- HALDI VIDEO -->
-<section class="haldi-section">
-  <video autoplay muted loop playsinline>
-    <source src="haldi.mp4">
-  </video>
-  <div class="haldi-text">🌼 Haldi Ceremony 🌼</div>
-</section>
-
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="closeModal()">
-  <img id="slideImg">
-</div>
-
-<!-- AUDIO -->
 <audio id="bgm" loop>
-  <source src="music.mp3">
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <div class="music-btn" onclick="toggleMusic()">🔊</div>
 
 <script>
-/* INTRO */
-function openInvite(){
- document.getElementById("intro").style.display="none";
-}
-
-/* MENU */
-function toggleMenu(){
- document.getElementById("menu").classList.toggle("active");
-}
-
-/* GALLERY */
-const galleries={
- haldi:["haldi1.jpg","haldi2.jpg"],
- reception:["rec1.jpg","rec2.jpg"]
-};
-
-let i=0, current=[];
-function openGallery(type){
- current=galleries[type];
- i=0;
- show();
- document.getElementById("modal").style.display="flex";
-}
-function show(){
- document.getElementById("slideImg").src=current[i];
-}
-
-/* SWIPE */
-let start=0;
-document.getElementById("modal").addEventListener("touchstart",e=>start=e.touches[0].clientX);
-document.getElementById("modal").addEventListener("touchend",e=>{
- let end=e.changedTouches[0].clientX;
- if(start-end>50) i=(i+1)%current.length;
- if(end-start>50) i=(i-1+current.length)%current.length;
- show();
-});
-
-function closeModal(){
- document.getElementById("modal").style.display="none";
-}
-
-/* MUSIC */
+/* 🎵 SMART MUSIC */
 let started=false;
 window.addEventListener('click',()=>{
  if(!started){
@@ -293,25 +220,29 @@ function toggleMusic(){
  a.paused ? a.play() : a.pause();
 }
 
-/* COUNTDOWN */
-let t=new Date("May 10, 2026 10:25").getTime();
+/* ⏳ COUNTDOWN */
+let target=new Date("May 10, 2026 10:25:00").getTime();
 setInterval(()=>{
- let d=t-Date.now();
- document.getElementById("countdown").innerHTML=Math.floor(d/86400000)+"d";
+ let d=target-Date.now();
+ let days=Math.floor(d/(1000*60*60*24));
+ let hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+ let min=Math.floor((d%(1000*60*60))/(1000*60));
+ document.getElementById("countdown").innerHTML=`⏳ ${days}d ${hrs}h ${min}m`;
 },1000);
 
-/* SCROLL */
+/* 🎬 SCROLL */
 window.addEventListener("scroll",()=>{
- let c=document.getElementById("card");
- if(c.getBoundingClientRect().top < window.innerHeight-80){
-   c.classList.add("show");
+ let card=document.getElementById("card");
+ if(card.getBoundingClientRect().top < window.innerHeight - 80){
+   card.classList.add("show");
  }
 });
 
 /* ACTIONS */
 function openMap(){
- window.open("https://maps.app.goo.gl/e5nKVW6cyCUn4xvr6");
+ window.open("https://maps.app.goo.gl/e5nKVW6cyCUn4xvr6?g_st=aw");
 }
+
 function shareWA(){
  window.open(`https://wa.me/?text=${encodeURIComponent(window.location.href)}`);
 }
