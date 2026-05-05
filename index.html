@@ -15,10 +15,12 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;}
-body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow:hidden;}
-
-video{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-2;animation:zoomVideo 25s infinite alternate ease-in-out;}
-@keyframes zoomVideo{from{transform:scale(1);} to{transform:scale(1.08);} }
+body{
+  font-family:'Inter',sans-serif;
+  background: url("background.jpg") center center / cover no-repeat fixed;
+  color:#fff;
+  overflow:hidden;
+}
 
 .overlay{position:fixed;width:100%;height:100%;background:radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(0,0,0,0.9));z-index:-1;transition:background 0.15s ease;will-change:background;}
 
@@ -350,9 +352,7 @@ document.getElementById("galleryModal").onclick = function(){
 };
 </script>
 
-<video autoplay muted loop playsinline>
-  <source src="video.mp4" type="video/mp4">
-</video>
+
 <div class="overlay"></div>
 
 <audio id="bgm" loop><source src="music.mp3" type="audio/mpeg"></audio>
