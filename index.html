@@ -328,6 +328,81 @@ window.openGallery = function(type){
 document.getElementById("galleryModal").onclick = function(){
  this.style.display = "none";
 };
+  @media (max-width:768px){
+
+  html, body{
+    height:auto;
+    overflow-y:auto;
+  }
+
+  body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  /* 🔝 TOP TITLE */
+  .top-names{
+    position:relative;
+    top:auto;
+    left:auto;
+    transform:none;
+
+    width:90%;
+    margin:20px auto 10px;
+    text-align:center;
+  }
+
+  /* 🖼 KEEP IMAGE CLEAR IN MIDDLE */
+  body{
+    background-position:center top;
+    background-size:cover;
+  }
+
+  /* 📦 DETAILS DOWN */
+  .left-panel{
+    position:relative;
+    top:auto;
+    left:auto;
+    transform:none;
+
+    width:90%;
+    margin-top:70vh;  /* 🔥 pushes content below image */
+  }
+
+  /* ⏳ COUNTDOWN */
+  .countdown{
+    text-align:center;
+    margin-top:10px;
+  }
+
+  /* 🔘 BUTTONS AT BOTTOM */
+  .right-panel{
+    position:relative;
+    top:auto;
+    right:auto;
+    transform:none;
+
+    width:90%;
+    margin:20px auto 40px;
+
+    display:flex;
+    gap:10px;
+    justify-content:space-between;
+  }
+
+  .btn{
+    flex:1;
+    padding:12px;
+    font-size:14px;
+  }
+
+  /* 📱 TEXT FIX */
+  .names{
+    font-size:2rem;
+  }
+
+}x
 </style>
 </head>
 
