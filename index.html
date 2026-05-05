@@ -27,8 +27,67 @@ body{
 .petal{position:fixed;top:-10px;width:8px;height:8px;background:#ffb6c1;border-radius:50%;opacity:0.7;animation:fall linear infinite;will-change:transform;}
 @keyframes fall{to{transform:translateY(110vh) translateX(40px);opacity:0;} }
 
-.center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;max-width:480px;padding:25px;border-radius:22px;background:rgba(255,255,255,0.07);backdrop-filter:blur(2px);text-align:center;transition:transform 0.12s ease;will-change:transform;}
+/* ===== ADD BELOW YOUR EXISTING CSS ===== */
 
+.top-names{
+  position:absolute;
+  top:8%;
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.08);
+  padding:15px 25px;
+  border-radius:16px;
+}
+
+.left-panel{
+  position:absolute;
+  left:5%;
+  top:50%;
+  transform:translateY(-50%);
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.08);
+  padding:18px;
+  border-radius:16px;
+  max-width:220px;
+}
+
+.right-panel{
+  position:absolute;
+  right:5%;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.08);
+  padding:18px;
+  border-radius:16px;
+}
+
+@media (max-width:768px){
+
+  .top-names{
+    top:5%;
+    width:90%;
+  }
+
+  .left-panel,
+  .right-panel{
+    position:static;
+    transform:none;
+    width:90%;
+    margin:10px auto;
+  }
+
+  .right-panel{
+    flex-direction:row;
+    justify-content:center;
+  }
+
+}
 .names{
  font-family: 'Playfair Display', serif;
  font-size:2.7rem;
@@ -360,22 +419,24 @@ document.getElementById("galleryModal").onclick = function(){
 
 <div class="music" onclick="playMusic()">🔊</div>
 
-<div class="center">
+<div class="top-names">
   <div class="names">Venu weds Sowmya</div>
   <div class="tagline">Together with love & blessings</div>
-  <div style="margin-top:6px;font-size:12px;opacity:0.7;font-style:italic;">🪔 शुभमस्तु विवाहः 🪔</div>
-  <div class="divider"></div>
+</div>
+
+<div class="left-panel">
   <div class="details">
     📍 Thotapally<br>
     🗓 Sunday, May 10, 2026<br>
     ⏰ Muhurtham: 10:25 AM<br>
-    ✨ Auspicious Wedding Ceremony
+    ✨ Wedding Ceremony
   </div>
   <div class="countdown" id="countdown"></div>
-  <div class="actions">
-    <button class="btn location-btn" onclick="openMap()">📍 Location</button>
-    <button class="btn share-btn" onclick="shareWA()">📤 Share</button>
-  </div>
+</div>
+
+<div class="right-panel">
+  <button class="btn" onclick="openMap()">📍 Location</button>
+  <button class="btn" onclick="shareWA()">📤 Share</button>
 </div>
 
 <script>
