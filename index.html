@@ -330,6 +330,7 @@ document.getElementById("galleryModal").onclick = function(){
 };
   @media (max-width:768px){
 
+  /* allow scroll */
   html, body{
     height:auto;
     overflow-y:auto;
@@ -339,49 +340,44 @@ document.getElementById("galleryModal").onclick = function(){
     display:flex;
     flex-direction:column;
     align-items:center;
+    background-position:center top;
   }
 
   /* 🔝 TOP TITLE */
   .top-names{
-    position:relative;
-    top:auto;
-    left:auto;
-    transform:none;
+    position:relative !important;
+    transform:none !important;
+    left:auto !important;
+    top:auto !important;
 
     width:90%;
     margin:20px auto 10px;
     text-align:center;
   }
 
-  /* 🖼 KEEP IMAGE CLEAR IN MIDDLE */
-  body{
-    background-position:center top;
-    background-size:cover;
-  }
-
-  /* 📦 DETAILS DOWN */
+  /* 🖼 PUSH CONTENT BELOW IMAGE */
   .left-panel{
-    position:relative;
-    top:auto;
-    left:auto;
-    transform:none;
+    position:relative !important;
+    transform:none !important;
+    left:auto !important;
+    top:auto !important;
 
     width:90%;
-    margin-top:70vh;  /* 🔥 pushes content below image */
+    margin-top:75vh;   /* 👈 MAIN MAGIC */
   }
 
-  /* ⏳ COUNTDOWN */
+  /* ⏳ countdown */
   .countdown{
     text-align:center;
     margin-top:10px;
   }
 
-  /* 🔘 BUTTONS AT BOTTOM */
+  /* 🔘 BUTTONS */
   .right-panel{
-    position:relative;
-    top:auto;
-    right:auto;
-    transform:none;
+    position:relative !important;
+    transform:none !important;
+    right:auto !important;
+    top:auto !important;
 
     width:90%;
     margin:20px auto 40px;
@@ -397,12 +393,12 @@ document.getElementById("galleryModal").onclick = function(){
     font-size:14px;
   }
 
-  /* 📱 TEXT FIX */
+  /* 📱 text size */
   .names{
     font-size:2rem;
   }
 
-}x
+}
 </style>
 </head>
 
